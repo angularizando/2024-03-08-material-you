@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$violet-palette,
+    tertiary: mat.$green-palette
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+:root {
+  @include mat.all-component-themes($theme);
+  // @include mat.color-variants-backwards-compatibility($theme);
+  --color-primary: #{mat.get-theme-color($theme, primary)};
+  --color-inverse-primary: #{mat.get-theme-color($theme, inverse-primary)};
+  --color-surface: #{mat.get-theme-color($theme, surface)};
+  --color-tertiary: #{mat.get-theme-color($theme, tertiary)};
+  --color-tertiary-container: #{mat.get-theme-color($theme, tertiary-container)};
+  --mdc-fab-container-color: var(--color-tertiary-container);
+  --mat-toolbar-container-background-color: var(--color-inverse-primary);
+}
